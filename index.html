@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>İngilizce Konu Anlatımları</title>
+    <style>
+        :root {
+            --primary-color: #007acc;
+            --secondary-color: #f8f9fa;
+            --accent-color: #28a745;
+            --text-color: #333;
+            --border-color: #ddd;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .header {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .header h1 {
+            margin: 0;
+            color: var(--primary-color);
+            font-size: 2.2em;
+        }
+
+        .search-container {
+            margin: 15px 0;
+            position: relative;
+        }
+
+        .search-box {
+            width: 100%;
+            max-width: 400px;
+            padding: 12px 40px 12px 16px;
+            border: 2px solid var(--border-color);
+            border-radius: 25px;
+            font-size: 16px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .search-box:focus {
+            border-color: var(--primary-color);
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #999;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            gap: 20px;
+        }
+
+        .sidebar {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            height: fit-content;
+            position: sticky;
+            top: 20px;
+        }
+
+        .content {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            min-height: 600px;
+        }
+
+        .nav-section {
+            margin-bottom: 25px;
+        }
+
+        .nav-section h3 {
+            margin: 0 0 15px 0;
+            color: var(--text-color);
+            border-left: 4px solid var(--primary-color);
+            padding-left: 12px;
+            font-size: 1.1em;
+        }
+
+        .nav-link {
+            display: block;
+            padding: 12px 16px;
+            text-decoration: none;
+            color: #555;
+            border-radius: 8px;
+            margin: 4px 0;
+            transition: all 0.3s ease;
+            border-left: 3px solid transparent;
+        }
+
+        .nav-link:hover {
+            background: var(--secondary-color);
+            border-left-color: var(--primary-color);
+            transform: translateX(4px);
+        }
+
+        .nav-link.active {
+            background: var(--primary-color);
+            color: white;
+            border-left-color: var(--accent-color);
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+        }
+
+        .spinner {
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid var(--primary-color);
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .breadcrumb {
+            background: var(--secondary-color);
+            padding: 10px 20px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            font-size: 0.9em;
+        }
+
+        .progress-indicator {
+            background: var(--secondary-color);
+            height: 4px;
+            border-radius: 2px;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar {
+                position: static;
+                order: 2;
+            }
+            
+            .content {
+                order: 1;
+            }
+            
+            body {
+                padding: 10px;
+            }
+        }
+
+        /* Dark mode support */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --text-color: #e0e0e0;
+                --border-color: #444;
+                --secondary-color: #2a2a2a;
+            }
+            
+            body {
+                background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            }
+            
+            .header, .sidebar, .content {
+                background: #1e1e1e;
+                color: var(--text-color);
+            }
+            
+            h1, h2, h3, h4, h5, h6 {
+                color: #e0e0e0 !important;
+            }
+        }
+
+        h1, h2, h3 { color: #333; }
+        table { border-collapse: collapse; width: 100%; margin: 20px 0; }
+        th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+        th { background-color: #f8f9fa; }
+        code { background: #f4f4f4; padding: 2px 6px; border-radius: 3px; }
+        pre { background: #f8f9fa; padding: 15px; border-radius: 5px; overflow-x: auto; }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+    <header class="header">
+        <h1>🎓 İngilizce Konu Anlatımları</h1>
+        <div class="search-container">
+            <input type="text" class="search-box" placeholder="Konu ara..." id="search-input">
+            <span class="search-icon">🔍</span>
+        </div>
+        <div class="progress-indicator">
+            <div class="progress-bar" id="progress-bar"></div>
+        </div>
+    </header>
+    
+    <div class="container">
+        <nav class="sidebar">
+            <div class="nav-section">
+                <h3>Genel Bakış</h3>
+                <a href="#" class="nav-link" data-file="Time & Tenses/Altın Kurallar - Tense Tablosu.md">Altın Kurallar - Tense Tablosu</a>
+                <a href="#" class="nav-link" data-file="Time & Tenses/Types of Verbs.md">Fiil Türleri</a>
+            </div>
+            
+            <div class="nav-section">
+                <h3>Present Tenseler</h3>
+                <a href="#" class="nav-link" data-file="Time & Tenses/Present Tenses/Simple Present Tense.md">Simple Present</a>
+                <a href="#" class="nav-link" data-file="Time & Tenses/Present Tenses/Present Continuous Tense.md">Present Continuous</a>
+                <a href="#" class="nav-link" data-file="Time & Tenses/Present Tenses/Present Perfect Tense.md">Present Perfect</a>
+                <a href="#" class="nav-link" data-file="Time & Tenses/Present Tenses/Present Perfect Continuous Tense.md">Present Perfect Continuous</a>
+            </div>
+            
+            <div class="nav-section">
+                <h3>Past Tenseler</h3>
+                <a href="#" class="nav-link" data-file="Time & Tenses/Past Tenses/Simple Past Tense.md">Simple Past</a>
+                <a href="#" class="nav-link" data-file="Time & Tenses/Past Tenses/Past Continuous Tense.md">Past Continuous</a>
+                <a href="#" class="nav-link" data-file="Time & Tenses/Past Tenses/Past Perfect Tense.md">Past Perfect</a>
+                <a href="#" class="nav-link" data-file="Time & Tenses/Past Tenses/Past Perfect Continuous Tense.md">Past Perfect Continuous</a>
+            </div>
+            
+            <div class="nav-section">
+                <h3>Future Tenseler</h3>
+                <a href="#" class="nav-link" data-file="Time & Tenses/Future Tenses/Simple Future Tense.md">Simple Future</a>
+                <a href="#" class="nav-link" data-file="Time & Tenses/Future Tenses/Future Continuous Tense.md">Future Continuous</a>
+                <a href="#" class="nav-link" data-file="Time & Tenses/Future Tenses/Future Perfect Tense.md">Future Perfect</a>
+                <a href="#" class="nav-link" data-file="Time & Tenses/Future Tenses/Future Perfect Continuous Tense.md">Future Perfect Continuous</a>
+            </div>
+        </nav>
+        
+        <main class="content">
+            <div class="breadcrumb" id="breadcrumb" style="display: none;">
+                Ana Sayfa
+            </div>
+            <div id="markdown-content">
+                <h2>🚀 İngilizce Yazılısılarında Yardımcınız Burada!</h2>
+                <p>Sol menüden herhangi bir konu seçerek öğrenmeye başlayabilirsiniz. Kolay gelsin!</p>
+                <div style="margin-top: 30px;">
+                    <h3>📚 Öne Çıkan Konular:</h3>
+                    <ul>
+                        <li>Simple Present Tense</li>
+                        <li>Past Perfect Continuous Tense</li>
+                        <li>Future Perfect Tense</li>
+                        <li>Types of Verbs</li>
+                    </ul>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script type="module">
+        // Enhanced JavaScript with search functionality
+        let allTopics = [];
+        const contentCache = new Map();
+
+        async function loadMarkdownFile(filePath) {
+            try {
+                const loadingHTML = `
+                    <div class="loading">
+                        <div class="spinner"></div>
+                        <h3>Yükleniyor...</h3>
+                        <p>İçerik hazırlanıyor, lütfen bekleyin.</p>
+                    </div>
+                `;
+                document.getElementById('markdown-content').innerHTML = loadingHTML;
+                
+                // Check cache first
+                if (contentCache.has(filePath)) {
+                    const cachedContent = contentCache.get(filePath);
+                    document.getElementById('markdown-content').innerHTML = marked.parse(cachedContent);
+                    return cachedContent;
+                }
+                
+                const response = await fetch(filePath);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const content = await response.text();
+                
+                // Cache the content
+                contentCache.set(filePath, content);
+                return content;
+            } catch (error) {
+                console.error('Error loading file:', filePath, error);
+                return `# ❌ Dosya Yüklenemedi\n\n"${filePath}" dosyası yüklenemedi. Dosyanın var olduğundan emin olun, veya geliştirici ile iletişime geçin.`;
+            }
+        }
+        
+        function updateBreadcrumb(fileName) {
+            const breadcrumb = document.getElementById('breadcrumb');
+            breadcrumb.style.display = 'block';
+            breadcrumb.textContent = `Ana Sayfa > ${fileName}`;
+        }
+        
+        function updateProgress() {
+            const totalTopics = document.querySelectorAll('.nav-link').length;
+            const completedTopics = document.querySelectorAll('.nav-link.visited').length;
+            const progressPercent = (completedTopics / totalTopics) * 100;
+            document.getElementById('progress-bar').style.width = `${progressPercent}%`;
+        }
+        
+        function initializeSearch() {
+            const searchInput = document.getElementById('search-input');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            // Populate topics array
+            for (const link of navLinks) {
+                allTopics.push({
+                    element: link,
+                    text: link.textContent.toLowerCase(),
+                    section: link.closest('.nav-section').querySelector('h3').textContent
+                });
+            }
+            
+            searchInput.addEventListener('input', function(e) {
+                const searchTerm = e.target.value.toLowerCase();
+                
+                for (const topic of allTopics) {
+                    const isVisible = topic.text.includes(searchTerm);
+                    topic.element.style.display = isVisible ? 'block' : 'none';
+                }
+            });
+        }
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('.nav-link');
+            const contentDiv = document.getElementById('markdown-content');
+            
+            initializeSearch();
+            
+            for (const link of navLinks) {
+                link.addEventListener('click', async function(e) {
+                    e.preventDefault();
+                    
+                    // Remove active class from all links
+                    for (const l of navLinks) {
+                        l.classList.remove('active');
+                    }
+                    
+                    // Add active and visited classes
+                    this.classList.add('active', 'visited');
+                    
+                    // Update breadcrumb and progress
+                    updateBreadcrumb(this.textContent);
+                    updateProgress();
+                    
+                    // Load content
+                    const filePath = this.dataset.file;
+                    const markdownContent = await loadMarkdownFile(filePath);
+                    contentDiv.innerHTML = marked.parse(markdownContent);
+                    
+                    // Scroll to top
+                    contentDiv.scrollIntoView({ behavior: 'smooth' });
+                });
+            }
+        });
+        
+        // Service worker registration using top-level await
+        if ('serviceWorker' in navigator) {
+            try {
+                const registration = await navigator.serviceWorker.register('/sw.js');
+                console.log('Service Worker registered with scope:', registration.scope);
+            } catch (error) {
+                console.error('Service Worker registration failed:', error);
+            }
+        }
+    </script>
+</body>
+</html>
