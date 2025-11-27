@@ -33,7 +33,7 @@ She got in while her friends were singing. (While + süreç)
 
 ## When Complaining About Something (Always)
 
-Geçmişte bizi kızdıran ve sürekli tekrar eden bir durumdan rahatsızlığımızı ifade etmek için kullanırız. Şikayet anlamındaki bu kullanım daha önce [[Present Continuous Tense]]'de çıkmıştı. Benzer kullanım söz konusudur.
+Geçmişte bizi kızdıran ve sürekli tekrar eden bir durumdan rahatsızlığımızı ifade etmek için kullanırız. Şikayet anlamındaki bu kullanım daha önce [Present Continuous Tense](../Present%20Tenses/Present%20Continuous%20Tense.md)'de çıkmıştı. Benzer kullanım söz konusudur.
 
 - I didn't like her as she was always complaining.
 - He was constantly asking personal questions. I got fed up with his questions.

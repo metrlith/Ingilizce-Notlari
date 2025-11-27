@@ -9,7 +9,7 @@ Kullanımı, **will be + V(ing)** şeklindedir. İki başlıkta incelenebilir. G
 > Planlanmış gelecek zaman için **will be + V(ing) kullanılabilir.**
 
 - The president will be meeting the prime minister tomorrow.
- 	- The president is meeting the prime minister tomorrow.
-  		- The president is going to meet the prime minister tomorrow.
+  - The president is meeting the prime minister tomorrow.
+    - The president is going to meet the prime minister tomorrow.
 
 Bu üç cümle de aynı anlamı taşır.

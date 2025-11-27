@@ -5,8 +5,6 @@
 Kullanım şekli **am/is/are + V(ing)**'dir.
 Bu tense ile kullanılan bazı zaman zarfları: *now, right now, at the moment, at present, for the time being, currently, these days, etc.*
 
----
-
 ## At The Time Of Speaking (now)
 
 Konuştuğumuz anda yapıyor olduğumuz eylemleri ifade ederken kullanılır. Yapmıyor olduğumuz eylemleri de ifade edebiliriz.

@@ -1,6 +1,6 @@
 # Past Perfect Continuous Tense
 
-Past Perfect Continuous Tense tıpkı [[Past Perfect Tense]] gibi geçmişte başlayıp yine geçmişte belli bir noktaya kadar devam eden eylemleri ifade etmek için kullanılabilir. Bu açıdan bakıldığında her iki tense birbirine eşit kabul edilse de aslında aralarında bazı farklılıklar vardır. Past Perfect Tense ile Past Perfect Continuous Tense arasında bulunan farklar tıpkı daha önce gördüğümüz [[Present Perfect Tense]] ile [[Present Perfect Continuous Tense]] arasında bulunan farklar gibidir. Bu durumda karşımıza Tense Paralelliği çıkmaktadır.
+Past Perfect Continuous Tense tıpkı [Past Perfect Tense](Past%20Perfect%20Tense.md) gibi geçmişte başlayıp yine geçmişte belli bir noktaya kadar devam eden eylemleri ifade etmek için kullanılabilir. Bu açıdan bakıldığında her iki tense birbirine eşit kabul edilse de aslında aralarında bazı farklılıklar vardır. Past Perfect Tense ile Past Perfect Continuous Tense arasında bulunan farklar tıpkı daha önce gördüğümüz [Present Perfect Tense](../Present%20Tenses/Present%20Perfect%20Tense.md) ile [Present Perfect Continuous Tense](../Present%20Tenses/Present%20Perfect%20Continuous%20Tense.md) arasında bulunan farklar gibidir. Bu durumda karşımıza Tense Paralelliği çıkmaktadır.
 
 Kullanımı, **had been + V(ing)** şeklindedir.
 
@@ -8,7 +8,7 @@ Kullanımı, **had been + V(ing)** şeklindedir.
 
 Adından da anlaşılacağı gibi Tense Paralelliği; bir yapı içinde beraber kullanılan farklı iki fiilin aynı zaman kuşağında bulunması esasına dayanır. Başka bir deyişle Past Tense'lerle Past Tense'lerin, Present Tense'lerle de Present Tense'lerin ya da Future Tense'lerin kullanılması anlamına gelir. Bu bağlamda gelecek noktalara dikkat edelim.
 
-[[Past Perfect Tense]], [[Present Perfect Tense]]'in bir derece past'ı olsa da aslında her iki tense aynı yapısal özelliklere ve kullanım alanlarına sahiptir. Aralarındaki tek fark sadece birinin present diğerinin past zaman kuşağında bulunmasıdır.
+[Past Perfect Tense](Past%20Perfect%20Tense.md), [Present Perfect Tense](../Present%20Tenses/Present%20Perfect%20Tense.md)'in bir derece past'ı olsa da aslında her iki tense aynı yapısal özelliklere ve kullanım alanlarına sahiptir. Aralarındaki tek fark sadece birinin present diğerinin past zaman kuşağında bulunmasıdır.
 
 - This is the first time I've ridden a horse, so I am very excited.
 - That was the first time I had ridden a horse, so I was very excited.
@@ -40,7 +40,7 @@ Adından da anlaşılacağı gibi Tense Paralelliği; bir yapı içinde beraber 
 - It is clear that they have known each other for the last two years.
 - It was clear that they had known each other for the last two years.
 
-[[Past Perfect Continuous Tense]] de [[Present Perfect Continuous Tense]]'in bir derecr past'ıdır. Buradaki fark yine daha öncedeki maddede belirtildiği gibi birinin present diğerinin past zaman kuşağında olmasıdır.
+[Past Perfect Continuous Tense](Past%20Perfect%20Continuous%20Tense.md) de [Present Perfect Continuous Tense](../Present%20Tenses/Present%20Perfect%20Continuous%20Tense.md)'in bir derece past'ıdır. Buradaki fark yine daha öncedeki maddede belirtildiği gibi birinin present diğerinin past zaman kuşağında olmasıdır.
 
 - I have been wishing to teach at the university since I got my teaching diploma.
 - She said that she had been wishing to teach at the university since she got her teaching diploma.

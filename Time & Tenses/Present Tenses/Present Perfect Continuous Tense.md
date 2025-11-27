@@ -1,8 +1,6 @@
 # Present Perfect Continuous Tense
 
-Kullanımı, **have/has been + V(ing)** şeklindedir. Bu tense de geçmişte başlayıp konuştuğumuz ana kadar devam eden eylemleri ifade etmek için kullanılır. Present Perfect Tense gibidir ama aralarında farklılıklar bulunur. Farklılar ele alınmadan önce aşağıda [[Present Perfect Tense]]'i incelemek isteyebilirsin.
-
----
+Kullanımı, **have/has been + V(ing)** şeklindedir. Bu tense de geçmişte başlayıp konuştuğumuz ana kadar devam eden eylemleri ifade etmek için kullanılır. Present Perfect Tense gibidir ama aralarında farklılıklar bulunur. Farklılar ele alınmadan önce aşağıda [Present Perfect Tense](../Present%20Tenses/Present%20Perfect%20Tense.md)'i incelemek isteyebilirsin.
 
 1. Bazı fiiller her iki tense'de de kullanılır. Geçmişte başlayıp konuştuğumuz ana kadar devam eden ya da daha yeni bitmiş eylemleri ifade etmek için o fiiller kullanılır.
 

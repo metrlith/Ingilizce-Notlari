@@ -5,8 +5,6 @@ Kullanımına göre değişen bir tense'dir. Altı yerde kullanılır.
 Kullanım şekli **am/is/are / do/does + V(1)**'dir.
 Bu tense ile kullanılan bazı zaman zarfları: *always, often, sometimes, seldom, never, every day, every week, every month, every summer, every year, etc.*
 
----
-
 ## Repeated Actions
 
 Sürekli tekrarlanan eylemlerde, alışkanlıklarda, hobilerde ya da zaman çizelgelerinde kullanılır.

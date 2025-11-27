@@ -1,8 +1,6 @@
 # Present Perfect Tense
 
-[[Present Tense]] ile [[Past Tense]] arasındadır. Bir ayağı geçmişte, diğer ayağı da şimdiki zamandadır. Bu tense'in diğer dillerde tam karşılığı olmadığı için ve aktarılan mesajın alıcı tarafından net bir biçimde algılanmasını sağladığı için "perfect" denilir. İki yerde kullanılır. Kullanımı, **have/has + V(3)** şeklindedir.
-
----
+[Present Tense](./Simple%20Present%20Tense.md) ile [Past Tense](./Simple%20Past%20Tense.md) arasındadır. Bir ayağı geçmişte, diğer ayağı da şimdiki zamandadır. Bu tense'in diğer dillerde tam karşılığı olmadığı için ve aktarılan mesajın alıcı tarafından net bir biçimde algılanmasını sağladığı için "perfect" denilir. İki yerde kullanılır. Kullanımı, **have/has + V(3)** şeklindedir.
 
 ## Unspecified Time Before Now
 

@@ -4,8 +4,6 @@ Geçmişte belli bir tarihte yaşanmış olayları anlatır. Üç yerde kullanı
 
 Simple Past Tense fiillerin ikinci hali ile kullanılır. Fiillerin ikinci halleri düzenli olabildiği gibi düzensiz de olabilir. Düzenli fiillere çeşitli şekillerde *-ed* takısı eklenerek Simple Past Tense yapılır. Düzensiz fiiller için böyle bir kural söz konusu değildir.
 
----
-
 ## Completed Action In The Past
 
 Geçmişte tamamlanmış olayları, eylemleri ve durumları aktarırken kullanılır.
