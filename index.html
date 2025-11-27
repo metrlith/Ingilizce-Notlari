@@ -4,15 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>İngilizce Konu Anlatımları 🌐</title>
+    <link rel="icon" href="chibi.ico" type="image/x-icon">
+
     <style>
+        /* ----------------------------------------------------
+            Color Variables
+        ---------------------------------------------------- */
         :root {
-            --primary-color: #007acc;
-            --secondary-color: #f8f9fa;
-            --accent-color: #28a745;
-            --text-color: #333;
-            --border-color: #ddd;
+            --primary-color: #ff0000;
+            --secondary-color: #4b26d0;
+            --accent-color: #29ba1c;
+            --text-color: #000000;
+            --border-color: #ffffff;
         }
 
+        /* ----------------------------------------------------
+            Reset & Global
+        ---------------------------------------------------- */
         * {
             box-sizing: border-box;
         }
@@ -27,21 +35,50 @@
             min-height: 100vh;
         }
 
+        /* ----------------------------------------------------
+            Accessibility: Skip Link
+        ---------------------------------------------------- */
+        .skip-link {
+            position: absolute;
+            left: -9999px;
+            width: 1px;
+            height: 1px;
+            overflow: hidden;
+        }
+
+        .skip-link:focus {
+            left: 10px;
+            top: 10px;
+            width: auto;
+            height: auto;
+            padding: 8px 12px;
+            border-radius: 4px;
+            background: #fff;
+            z-index: 9999;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+        }
+
+        /* ----------------------------------------------------
+            Header
+        ---------------------------------------------------- */
         .header {
             background: white;
             padding: 20px;
             border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            margin-bottom: 20px;
             text-align: center;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
 
         .header h1 {
             margin: 0;
-            color: var(--primary-color);
             font-size: 2.2em;
+            color: var(--primary-color);
         }
 
+        /* ----------------------------------------------------
+            Search
+        ---------------------------------------------------- */
         .search-container {
             margin: 15px 0;
             position: relative;
@@ -51,47 +88,54 @@
             width: 100%;
             max-width: 400px;
             padding: 12px 40px 12px 16px;
-            border: 2px solid var(--border-color);
-            border-radius: 25px;
             font-size: 16px;
-            outline: none;
+            border-radius: 25px;
+            border: 2px solid var(--border-color);
             transition: border-color 0.3s;
+            outline: none;
         }
 
         .search-box:focus {
             border-color: var(--primary-color);
+            box-shadow: 0 0 0 4px rgba(0,122,204,0.08);
         }
 
         .search-icon {
             position: absolute;
             right: 15px;
             top: 50%;
+            pointer-events: none;
             transform: translateY(-50%);
             color: #999;
         }
 
+        .no-results {
+            display: none;
+            margin-top: 8px;
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        /* ----------------------------------------------------
+            Layout Grid
+        ---------------------------------------------------- */
         .container {
             display: grid;
             grid-template-columns: 320px 1fr;
             gap: 20px;
         }
 
+        /* ----------------------------------------------------
+            Sidebar Navigation
+        ---------------------------------------------------- */
         .sidebar {
             background: white;
             padding: 20px;
             border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
             height: fit-content;
             position: sticky;
             top: 20px;
-        }
-
-        .content {
-            background: white;
-            padding: 30px;
-            border-radius: 12px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            min-height: 600px;
         }
 
         .nav-section {
@@ -99,28 +143,30 @@
         }
 
         .nav-section h3 {
-            margin: 0 0 15px 0;
+            margin: 0 0 15px;
+            font-size: 1.1em;
             color: var(--text-color);
             border-left: 4px solid var(--primary-color);
             padding-left: 12px;
-            font-size: 1.1em;
         }
 
         .nav-link {
             display: block;
             padding: 12px 16px;
+            margin: 4px 0;
             text-decoration: none;
             color: #555;
             border-radius: 8px;
-            margin: 4px 0;
-            transition: all 0.3s ease;
             border-left: 3px solid transparent;
+            transition: all 0.18s ease;
         }
 
-        .nav-link:hover {
+        .nav-link:hover,
+        .nav-link:focus {
             background: var(--secondary-color);
             border-left-color: var(--primary-color);
             transform: translateX(4px);
+            outline: none;
         }
 
         .nav-link.active {
@@ -129,6 +175,32 @@
             border-left-color: var(--accent-color);
         }
 
+        /* ----------------------------------------------------
+            Main Content Area
+        ---------------------------------------------------- */
+        .content {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            min-height: 600px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        /* ----------------------------------------------------
+            Breadcrumb
+        ---------------------------------------------------- */
+        .breadcrumb {
+            display: none;
+            padding: 10px 20px;
+            margin-bottom: 20px;
+            font-size: 0.9em;
+            border-radius: 6px;
+            background: var(--secondary-color);
+        }
+
+        /* ----------------------------------------------------
+            Loading Spinner
+        ---------------------------------------------------- */
         .loading {
             text-align: center;
             padding: 40px;
@@ -136,275 +208,394 @@
         }
 
         .spinner {
-            border: 3px solid #f3f3f3;
-            border-top: 3px solid var(--primary-color);
-            border-radius: 50%;
             width: 30px;
             height: 30px;
-            animation: spin 1s linear infinite;
             margin: 0 auto 20px;
+            border-radius: 50%;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid var(--primary-color);
+            animation: spin 1s linear infinite;
         }
 
         @keyframes spin {
-            0% { transform: rotate(0deg); }
+            0% { transform: rotate(0); }
             100% { transform: rotate(360deg); }
         }
 
-        .breadcrumb {
-            background: var(--secondary-color);
-            padding: 10px 20px;
-            border-radius: 6px;
-            margin-bottom: 20px;
-            font-size: 0.9em;
-        }
-
+        /* ----------------------------------------------------
+            Progress Bar
+        ---------------------------------------------------- */
         .progress-indicator {
-            background: var(--secondary-color);
             height: 4px;
-            border-radius: 2px;
             margin-bottom: 20px;
+            border-radius: 2px;
+            background: var(--secondary-color);
             overflow: hidden;
         }
 
-        .progress-bar {
-            height: 100%;
-            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
-            width: 0%;
-            transition: width 0.3s ease;
+        .progress-indicator progress {
+            width: 100%;
+            height: 4px;
+            border: none;
+            background: transparent;
+            appearance: none;
+            -webkit-appearance: none;
         }
 
-        /* Mobile responsiveness */
+        .progress-indicator progress::-webkit-progress-bar {
+            background: var(--secondary-color);
+        }
+
+        .progress-indicator progress::-webkit-progress-value {
+            border-radius: 2px;
+            transition: width 0.3s;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+        }
+
+        .progress-indicator progress::-moz-progress-bar {
+            border-radius: 2px;
+            transition: width 0.3s;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+        }
+
+        /* ----------------------------------------------------
+            Markdown Elements
+        ---------------------------------------------------- */
+        h1, h2, h3 {
+            color: #2a2525;
+        }
+
+        /* Stickbuh */
+        .stickbug {
+            display: block;
+            margin: 16px auto;
+            max-width: 320px;
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        table {
+            width: 100%;
+            margin: 20px 0;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        th {
+            background: #f8f9fa;
+        }
+
+        code {
+            padding: 2px 6px;
+            border-radius: 3px;
+            background: #f4f4f4;
+        }
+
+        pre {
+            padding: 15px;
+            border-radius: 5px;
+            background: #f8f9fa;
+            overflow-x: auto;
+        }
+
+        :focus-visible {
+            outline: 3px solid rgba(0,122,204,0.25);
+            outline-offset: 2px;
+        }
+
+        /* ----------------------------------------------------
+            Mobile
+        ---------------------------------------------------- */
         @media (max-width: 768px) {
             .container {
                 grid-template-columns: 1fr;
             }
-            
             .sidebar {
                 position: static;
                 order: 2;
             }
-            
             .content {
                 order: 1;
             }
-            
             body {
                 padding: 10px;
             }
         }
 
-        /* Dark mode support */
+        /* ----------------------------------------------------
+            Dark Mode
+        ---------------------------------------------------- */
         @media (prefers-color-scheme: dark) {
             :root {
                 --text-color: #e0e0e0;
                 --border-color: #444;
                 --secondary-color: #2a2a2a;
             }
-            
+
             body {
                 background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
             }
-            
-            .header, .sidebar, .content {
+
+            .header,
+            .sidebar,
+            .content {
                 background: #1e1e1e;
                 color: var(--text-color);
             }
-            
-            h1, h2, h3, h4, h5, h6 {
+
+            h1, h2, h3 {
                 color: #e0e0e0 !important;
             }
         }
-
-        h1, h2, h3 { color: #333; }
-        table { border-collapse: collapse; width: 100%; margin: 20px 0; }
-        th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
-        th { background-color: #f8f9fa; }
-        code { background: #f4f4f4; padding: 2px 6px; border-radius: 3px; }
-        pre { background: #f8f9fa; padding: 15px; border-radius: 5px; overflow-x: auto; }
     </style>
+
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dompurify@2.4.0/dist/purify.min.js"></script>
 </head>
+
 <body>
-    <header class="header">
+    <a class="skip-link" href="#markdown-content">Sayfaya atla</a>
+
+    <!-- ----------------------------------------------------
+         Header
+    ---------------------------------------------------- -->
+    <header class="header" role="banner">
         <h1>🎓 İngilizce Konu Anlatımları</h1>
-        <div class="search-container">
-            <input type="text" class="search-box" placeholder="Konu ara..." id="search-input">
-            <span class="search-icon">🔍</span>
+
+        <div class="search-container" role="search" aria-label="Konu ara">
+            <input id="search-input" class="search-box" type="text" placeholder="Konu ara..." aria-label="Konu ara">
+            <div id="no-results" class="no-results">Aranan kritere uygun sonuç bulunamadı.</div>
         </div>
-        <div class="progress-indicator">
-            <div class="progress-bar" id="progress-bar"></div>
+
+        <div id="sw-status" aria-live="polite" style="position:absolute; left:-9999px; top:0;"></div>
+
+        <div class="progress-indicator" aria-label="Okuma ilerlemesi">
+            <progress id="progress-bar" value="0" max="100"></progress>
         </div>
     </header>
-    
+
+    <!-- ----------------------------------------------------
+         Main Layout
+    ---------------------------------------------------- -->
     <div class="container">
-        <nav class="sidebar">
-            <div class="nav-section">
-                <h3>Genel Bakış</h3>
-                <a href="#" class="nav-link" data-file="Time & Tenses/Altın Kurallar - Tense Tablosu.md">Altın Kurallar - Tense Tablosu</a>
-                <a href="#" class="nav-link" data-file="Time & Tenses/Types of Verbs.md">Fiil Türleri</a>
+
+        <!-- Sidebar Navigation -->
+        <nav class="sidebar" role="navigation" aria-label="Ana menü">
+
+            <div class="nav-section" data-section="Genel Bakış">
+                <h3>Çeşitli</h3>
+                <a class="nav-link" data-file="Time & Tenses/Altın Kurallar - Tense Tablosu.md">Altın Kurallar - Tense Tablosu</a>
+                <a class="nav-link" data-file="Time & Tenses/Types of Verbs.md">Fiil Türleri</a>
             </div>
-            
+
             <div class="nav-section">
                 <h3>Present Tenseler</h3>
-                <a href="#" class="nav-link" data-file="Time & Tenses/Present Tenses/Simple Present Tense.md">Simple Present</a>
-                <a href="#" class="nav-link" data-file="Time & Tenses/Present Tenses/Present Continuous Tense.md">Present Continuous</a>
-                <a href="#" class="nav-link" data-file="Time & Tenses/Present Tenses/Present Perfect Tense.md">Present Perfect</a>
-                <a href="#" class="nav-link" data-file="Time & Tenses/Present Tenses/Present Perfect Continuous Tense.md">Present Perfect Continuous</a>
+                <a class="nav-link" data-file="Time & Tenses/Present Tenses/Simple Present Tense.md">Simple Present</a>
+                <a class="nav-link" data-file="Time & Tenses/Present Tenses/Present Continuous Tense.md">Present Continuous</a>
+                <a class="nav-link" data-file="Time & Tenses/Present Tenses/Present Perfect Tense.md">Present Perfect</a>
+                <a class="nav-link" data-file="Time & Tenses/Present Tenses/Present Perfect Continuous Tense.md">Present Perfect Continuous</a>
             </div>
-            
+
             <div class="nav-section">
                 <h3>Past Tenseler</h3>
-                <a href="#" class="nav-link" data-file="Time & Tenses/Past Tenses/Simple Past Tense.md">Simple Past</a>
-                <a href="#" class="nav-link" data-file="Time & Tenses/Past Tenses/Past Continuous Tense.md">Past Continuous</a>
-                <a href="#" class="nav-link" data-file="Time & Tenses/Past Tenses/Past Perfect Tense.md">Past Perfect</a>
-                <a href="#" class="nav-link" data-file="Time & Tenses/Past Tenses/Past Perfect Continuous Tense.md">Past Perfect Continuous</a>
+                <a class="nav-link" data-file="Time & Tenses/Past Tenses/Simple Past Tense.md">Simple Past</a>
+                <a class="nav-link" data-file="Time & Tenses/Past Tenses/Past Continuous Tense.md">Past Continuous</a>
+                <a class="nav-link" data-file="Time & Tenses/Past Tenses/Past Perfect Tense.md">Past Perfect</a>
+                <a class="nav-link" data-file="Time & Tenses/Past Tenses/Past Perfect Continuous Tense.md">Past Perfect Continuous</a>
             </div>
-            
+
             <div class="nav-section">
                 <h3>Future Tenseler</h3>
-                <a href="#" class="nav-link" data-file="Time & Tenses/Future Tenses/Simple Future Tense.md">Simple Future</a>
-                <a href="#" class="nav-link" data-file="Time & Tenses/Future Tenses/Future Continuous Tense.md">Future Continuous</a>
-                <a href="#" class="nav-link" data-file="Time & Tenses/Future Tenses/Future Perfect Tense.md">Future Perfect</a>
-                <a href="#" class="nav-link" data-file="Time & Tenses/Future Tenses/Future Perfect Continuous Tense.md">Future Perfect Continuous</a>
+                <a class="nav-link" data-file="Time & Tenses/Future Tenses/Simple Future Tense.md">Simple Future</a>
+                <a class="nav-link" data-file="Time & Tenses/Future Tenses/Future Continuous Tense.md">Future Continuous</a>
+                <a class="nav-link" data-file="Time & Tenses/Future Tenses/Future Perfect Tense.md">Future Perfect</a>
+                <a class="nav-link" data-file="Time & Tenses/Future Tenses/Future Perfect Continuous Tense.md">Future Perfect Continuous</a>
             </div>
+
+            <div class="nav-section">
+                <h3>Modallar</h3>
+                <a class="nav-link" data-file="Modals/Modals.md">Modals</a>
+            </div>
+
         </nav>
-        
-        <main class="content">
-            <div class="breadcrumb" id="breadcrumb" style="display: none;">
-                Ana Sayfa
-            </div>
-            <div id="markdown-content">
-                <h2>🚀 İngilizce Yazılısılarında Yardımcınız Burada!</h2>
-                <p>Sol menüden herhangi bir konu seçerek öğrenmeye başlayabilirsiniz. Kolay gelsin!</p>
-                <div style="margin-top: 30px;">
-                    <h3>📚 Öne Çıkan Konular:</h3>
-                    <ul>
-                        <li>Simple Present Tense</li>
-                        <li>Past Perfect Continuous Tense</li>
-                        <li>Future Perfect Tense</li>
-                        <li>Types of Verbs</li>
-                    </ul>
-                </div>
+
+        <!-- Main Content -->
+        <main id="main" class="content" role="main">
+            <div id="breadcrumb" class="breadcrumb">Ana Sayfa</div>
+
+            <div id="markdown-content" tabindex="-1" aria-live="polite">
+                <h2>🚀 Taşınabilir İngilizce Notları</h2>
+                <p>Sol menüden veya aşağı kaydırarak bir konu öğrenmeye başlayabilirsiniz.</p>
+                <img src="stickbug.gif" alt="Stick bug" class="stickbug">
             </div>
         </main>
     </div>
 
+    <!-- ----------------------------------------------------
+         Scripts
+    ---------------------------------------------------- -->
     <script type="module">
-        // Enhanced JavaScript with search functionality
-        let allTopics = [];
         const contentCache = new Map();
+        const VISITED_KEY = 'ing_notlar_visited';
 
-        async function loadMarkdownFile(filePath) {
+        function saveVisitedSet(set) {
             try {
-                const loadingHTML = `
-                    <div class="loading">
-                        <div class="spinner"></div>
-                        <h3>Yükleniyor...</h3>
-                        <p>İçerik hazırlanıyor, lütfen bekleyin.</p>
-                    </div>
-                `;
-                document.getElementById('markdown-content').innerHTML = loadingHTML;
-                
-                // Check cache first
-                if (contentCache.has(filePath)) {
-                    const cachedContent = contentCache.get(filePath);
-                    document.getElementById('markdown-content').innerHTML = marked.parse(cachedContent);
-                    return cachedContent;
-                }
-                
-                const response = await fetch(filePath);
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-                const content = await response.text();
-                
-                // Cache the content
-                contentCache.set(filePath, content);
-                return content;
-            } catch (error) {
-                console.error('Error loading file:', filePath, error);
-                return `# ❌ Dosya Yüklenemedi\n\n"${filePath}" dosyası yüklenemedi. Dosyanın var olduğundan emin olun, veya geliştirici ile iletişime geçin.`;
+                localStorage.setItem(VISITED_KEY, JSON.stringify([...set]));
+            } catch (e) {
+                console.error('Failed to save visited set:', e);
             }
         }
-        
-        function updateBreadcrumb(fileName) {
-            const breadcrumb = document.getElementById('breadcrumb');
-            breadcrumb.style.display = 'block';
-            breadcrumb.textContent = `Ana Sayfa > ${fileName}`;
+
+        function loadVisitedSet() {
+            try {
+                const raw = localStorage.getItem(VISITED_KEY);
+                return raw ? new Set(JSON.parse(raw)) : new Set();
+            } catch (e) {
+                console.error('Failed to load visited set:', e);
+                return new Set();
+            }
         }
-        
+
+        async function loadMarkdownFile(path) {
+            if (contentCache.has(path)) return contentCache.get(path);
+
+            const encoded = encodeURI(path);
+            const response = await fetch(encoded);
+
+            if (!response.ok) throw new Error(`HTTP ${response.status}`);
+
+            const text = await response.text();
+            contentCache.set(path, text);
+            return text;
+        }
+
+        function renderMarkdownTo(container, text) {
+            const html = marked.parse(text);
+            container.innerHTML = DOMPurify.sanitize(html);
+        }
+
+        function updateBreadcrumb(name) {
+            const bc = document.getElementById('breadcrumb');
+            bc.style.display = 'block';
+            bc.textContent = `Ana Sayfa > ${name}`;
+        }
+
         function updateProgress() {
-            const totalTopics = document.querySelectorAll('.nav-link').length;
-            const completedTopics = document.querySelectorAll('.nav-link.visited').length;
-            const progressPercent = (completedTopics / totalTopics) * 100;
-            document.getElementById('progress-bar').style.width = `${progressPercent}%`;
+            const total = document.querySelectorAll('.nav-link').length;
+            const visited = loadVisitedSet();
+            const percent = total ? Math.round((visited.size / total) * 100) : 0;
+
+            const bar = document.getElementById('progress-bar');
+            bar.value = percent;
+            bar.setAttribute('aria-valuenow', String(percent));
         }
-        
+
         function initializeSearch() {
-            const searchInput = document.getElementById('search-input');
-            const navLinks = document.querySelectorAll('.nav-link');
-            
-            // Populate topics array
-            for (const link of navLinks) {
-                allTopics.push({
-                    element: link,
-                    text: link.textContent.toLowerCase(),
-                    section: link.closest('.nav-section').querySelector('h3').textContent
-                });
+            const input = document.getElementById('search-input');
+            const links = [...document.querySelectorAll('.nav-link')];
+            const noResults = document.getElementById('no-results');
+
+            const topics = links.map(link => ({
+                element: link,
+                text: link.textContent.toLowerCase(),
+                section: link.closest('.nav-section')?.querySelector('h3')?.textContent.toLowerCase() || ''
+            }));
+
+            function filter(term) {
+                const q = term.toLowerCase().trim();
+                let visible = 0;
+
+                for (const t of topics) {
+                    const match = !q || t.text.includes(q) || t.section.includes(q);
+                    t.element.style.display = match ? 'block' : 'none';
+                    if (match) visible++;
+                }
+
+                noResults.style.display = visible ? 'none' : 'block';
             }
-            
-            searchInput.addEventListener('input', function(e) {
-                const searchTerm = e.target.value.toLowerCase();
-                
-                for (const topic of allTopics) {
-                    const isVisible = topic.text.includes(searchTerm);
-                    topic.element.style.display = isVisible ? 'block' : 'none';
+
+            input.addEventListener('input', e => filter(e.target.value));
+
+            input.addEventListener('keydown', e => {
+                if (e.key === 'Escape') {
+                    input.value = '';
+                    filter('');
                 }
             });
         }
-        
-        document.addEventListener('DOMContentLoaded', function() {
-            const navLinks = document.querySelectorAll('.nav-link');
-            const contentDiv = document.getElementById('markdown-content');
-            
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const links = document.querySelectorAll('.nav-link');
+            const content = document.getElementById('markdown-content');
+            const visited = loadVisitedSet();
+
             initializeSearch();
-            
-            for (const link of navLinks) {
-                link.addEventListener('click', async function(e) {
+
+            for (const link of links) {
+                if (visited.has(link.dataset.file)) link.classList.add('visited');
+            }
+
+            updateProgress();
+
+            for (const link of links) {
+                link.addEventListener('click', async e => {
                     e.preventDefault();
-                    
-                    // Remove active class from all links
-                    for (const l of navLinks) {
-                        l.classList.remove('active');
-                    }
-                    
-                    // Add active and visited classes
-                    this.classList.add('active', 'visited');
-                    
-                    // Update breadcrumb and progress
-                    updateBreadcrumb(this.textContent);
+
+                    links.forEach(l => l.classList.remove('active'));
+                    link.classList.add('active', 'visited');
+
+                    visited.add(link.dataset.file);
+                    saveVisitedSet(visited);
                     updateProgress();
-                    
-                    // Load content
-                    const filePath = this.dataset.file;
-                    const markdownContent = await loadMarkdownFile(filePath);
-                    contentDiv.innerHTML = marked.parse(markdownContent);
-                    
-                    // Scroll to top
-                    contentDiv.scrollIntoView({ behavior: 'smooth' });
+
+                    updateBreadcrumb(link.textContent);
+
+                    content.innerHTML = `
+                        <div class="loading" role="status">
+                            <div class="spinner"></div>
+                            <h3>Yükleniyor...</h3>
+                            <p>İçerik hazırlanıyor, lütfen bekleyin.</p>
+                        </div>
+                    `;
+
+                    try {
+                        const md = await loadMarkdownFile(link.dataset.file);
+                        renderMarkdownTo(content, md);
+                    } catch {
+                        const err = `# ❌ Dosya Yüklenemedi
+
+"${link.dataset.file}" dosyası yüklenemedi. Lütfen tekrar deneyin.`;
+                        renderMarkdownTo(content, err);
+                    }
+
+                    content.focus({ preventScroll: true });
+                    content.scrollIntoView({ behavior: 'smooth' });
+                });
+
+                link.addEventListener('keydown', e => {
+                    if (['Enter', ' '].includes(e.key)) {
+                        e.preventDefault();
+                        link.click();
+                    }
                 });
             }
         });
-        
-        // Service worker registration using top-level await
+
         if ('serviceWorker' in navigator) {
             try {
-                const registration = await navigator.serviceWorker.register('/sw.js');
-                console.log('Service Worker registered with scope:', registration.scope);
-            } catch (error) {
-                console.error('Service Worker registration failed:', error);
+                const reg = await navigator.serviceWorker.register('./sw.js');
+                console.log('SW registered:', reg.scope);
+            } catch (err) {
+                console.error('SW failed:', err);
             }
         }
     </script>
+
 </body>
 </html>
